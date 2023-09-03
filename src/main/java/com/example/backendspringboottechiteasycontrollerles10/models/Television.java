@@ -1,9 +1,9 @@
-package models;
+package com.example.backendspringboottechiteasycontrollerles10.models;
 
 public class Television {
-    private String type;
-    private String brand;
     private String name;
+    private String brand;
+    private String type;
     private Integer price;
 
     public String getType() {
@@ -37,4 +37,5 @@ public class Television {
     public void setPrice(Integer price) {
         this.price = price;
     }
+
 }
