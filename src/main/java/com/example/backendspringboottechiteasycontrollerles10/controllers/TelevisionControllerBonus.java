@@ -2,6 +2,7 @@ package com.example.backendspringboottechiteasycontrollerles10.controllers;
 
 import com.example.backendspringboottechiteasycontrollerles10.exceptions.TelevisionNameTooLongException;
 import com.example.backendspringboottechiteasycontrollerles10.models.Television;
+import com.example.backendspringboottechiteasycontrollerles10.repositories.TelevisionRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ public class TelevisionControllerBonus {
 
     public List<String> televisionDatabase = new ArrayList<>();
 
+    private final void TelevisionRepository (TelevisionRepository televisionRepository)
 
     @GetMapping("/televisions")
     public ResponseEntity<List<String>> getAllTelevisions() {
