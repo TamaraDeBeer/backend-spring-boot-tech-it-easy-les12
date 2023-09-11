@@ -21,6 +21,6 @@ public class ExceptionController {
 
     @ExceptionHandler
     public ResponseEntity<String> exception (TelevisionNameTooLongException exception) {
-        return new ResponseEntity<>(exception.getMessage(),HttpStatus.REQUEST_HEADER_FIELDS_TOO_LARGE);
+        return new ResponseEntity<>(exception.getMessage(),HttpStatus.BAD_REQUEST);
     }
 }

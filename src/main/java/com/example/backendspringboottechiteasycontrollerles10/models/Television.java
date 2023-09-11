@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 public class Television {
     @Id
     @GeneratedValue
-    private Long id;
+    Long id;
 
     String type;
     String brand;
