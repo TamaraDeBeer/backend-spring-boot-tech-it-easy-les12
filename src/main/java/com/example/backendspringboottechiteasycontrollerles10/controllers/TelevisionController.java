@@ -1,56 +1,83 @@
-//package com.example.backendspringboottechiteasycontrollerles10.controllers;
-//
-//import com.example.backendspringboottechiteasycontrollerles10.exceptions.RecordNotFoundException;
-//import com.example.backendspringboottechiteasycontrollerles10.exceptions.TelevisionNameTooLongException;
-//import com.example.backendspringboottechiteasycontrollerles10.models.Television;
-//import org.springframework.http.HttpStatus;
-//import org.springframework.http.ResponseEntity;
-//import org.springframework.web.bind.annotation.*;
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//@RestController
-//public class TelevisionController {
-//    private final List<Television> televisions;
-//    public TelevisionController() {
-//        televisions = new ArrayList<>();
-//        Television t = new Television();
-//        t.setName("Crystal");
-//        t.setBrand("Samsung");
-//        t.setPrice(549);
-//        t.setType("UHD 55AU7040");
-//        televisions.add(t);
-//    }
-//
-//    @GetMapping("/televisions")
-//    public ResponseEntity<List<Television>> getAllTelevisions() {
-//        return new ResponseEntity<>(televisions, HttpStatus.OK);
-////      return ResponseEntity.ok(televisions);
-//    }
-//
-//    @GetMapping("/televisions/{id}")
-//    public ResponseEntity<Object> getTelevision(@PathVariable("id") int id) {
-//        if (id >= 0 && id < televisions.size()) {
-//            Television t = televisions.get(id);
-//            return ResponseEntity.ok(t);
-//        } else {
-//            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-//        }
-//    }
-//
-//    @PostMapping("/televisions")
-//    public ResponseEntity<Television> createTelevision(@RequestBody Television newTelevision) {
-//        televisions.add(newTelevision);
-//        return new ResponseEntity<>(newTelevision, HttpStatus.CREATED);
-//    }
-//
-//    @PutMapping("/televisions/{id}")
-//    public ResponseEntity<Television> updateTelevision(@PathVariable int id, @RequestBody String television) {
-//        return ResponseEntity.noContent().build();
-//    }
-//
-//    @DeleteMapping("/televisions/{index}")
-//    public ResponseEntity<Television> deleteTelevision(@PathVariable int index) {
-//        return ResponseEntity.noContent().build();
-//    }
-//}
+package com.example.backendspringboottechiteasycontrollerles10.controllers;
+
+import com.example.backendspringboottechiteasycontrollerles10.exceptions.RecordNotFoundException;
+import com.example.backendspringboottechiteasycontrollerles10.models.Television;
+import com.example.backendspringboottechiteasycontrollerles10.repositories.TelevisionRepository;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+public class TelevisionController {
+
+    private final TelevisionRepository televisionRepository;
+
+    public TelevisionController(TelevisionRepository televisionRepository) {
+        this.televisionRepository = televisionRepository;
+    }
+
+    @GetMapping("/televisions")
+    public ResponseEntity<List<Television>> getAllTelevisions() {
+        return ResponseEntity.ok(televisionRepository.findAll());
+    }
+
+    @GetMapping("/televisions/{id}")
+    public ResponseEntity<Television> getTelevision(@PathVariable("id") Long id) {
+        Optional<Television> television = televisionRepository.findById(id);
+        if (television.isEmpty()) {
+            throw new RecordNotFoundException("Er is geen televisie met dit id nummer: " + id);
+        } else {
+            Television television1 = television.get();
+            return ResponseEntity.ok(television1);
+        }
+    }
+
+    @PostMapping("/televisions")
+    public ResponseEntity<Television> createTelevision(@RequestBody Television television) {
+        televisionRepository.save(television);
+        URI uri = URI.create(ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/" + television.getId()).toUriString());
+        return  ResponseEntity.created(uri).body(television);
+    }
+
+    @PutMapping("/televisions/{id}")
+    public ResponseEntity<Television> updateTelevision(@PathVariable Long id, @RequestBody Television updateTelevision) {
+        Optional<Television> television = televisionRepository.findById(id);
+        if (television.isEmpty()) {
+            throw new RecordNotFoundException("Er is geen televisie met dit id nummer: " + id);
+        } else {
+            Television television1 = television.get();
+            television1.setType(updateTelevision.getType());
+            television1.setBrand(updateTelevision.getBrand());
+            television1.setName(updateTelevision.getName());
+            television1.setPrice(updateTelevision.getPrice());
+            television1.setAvailableSize(updateTelevision.getAvailableSize());
+            television1.setRefreshRate(updateTelevision.getRefreshRate());
+            television1.setScreenType(updateTelevision.getScreenType());
+            television1.setScreenQuality(updateTelevision.getScreenQuality());
+            television1.setSmartTv(updateTelevision.getSmartTv());
+            television1.setWifi(updateTelevision.getWifi());
+            television1.setVoiceControl(updateTelevision.getVoiceControl());
+            television1.setHdr(updateTelevision.getHdr());
+            television1.setBluetooth(updateTelevision.getBluetooth());
+            television1.setAmbiLight(updateTelevision.getAmbiLight());
+            television1.setOriginalStock(updateTelevision.getOriginalStock());
+            television1.setSold(updateTelevision.getSold());
+            Television television2 = televisionRepository.save(television1);
+            return ResponseEntity.ok(television2);
+        }
+    }
+
+    @DeleteMapping("/televisions/{id}")
+    public ResponseEntity<Television> deleteTelevision(@PathVariable("id") Long id) {
+        televisionRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    // @PatchMapping snap ik niet.
+}

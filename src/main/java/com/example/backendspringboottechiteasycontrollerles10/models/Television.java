@@ -17,6 +17,7 @@ public class Television {
     String name;
     Double price;
     Double availableSize;
+    // wat als er verschillende formaten zijn?
     Double refreshRate;
     String screenType;
     String screenQuality;
