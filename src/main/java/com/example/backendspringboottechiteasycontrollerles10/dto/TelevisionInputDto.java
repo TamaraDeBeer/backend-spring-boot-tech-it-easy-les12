@@ -1,65 +1,36 @@
-package com.example.backendspringboottechiteasycontrollerles10.models;
+package com.example.backendspringboottechiteasycontrollerles10.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.example.backendspringboottechiteasycontrollerles10.models.Television;
+import jakarta.validation.constraints.*;
 
-@Entity
-@Table (name = "televisions")
-public class Television {
-    @Id
-    @GeneratedValue
-    private Long id;
+// bij requestbody
+public class TelevisionInputDto {
+    @NotEmpty
+    public String type;
+    @NotEmpty
+    public String brand;
+    @NotEmpty
+    public String name;
+    @NotNull
+    @Digits(integer = 6, fraction = 2)
+    public Double price;
+    public Double availableSize;
+    @NotNull
+    @Digits(integer = 6, fraction = 2)
+    public Double refreshRate;
+    public String screenType;
+    public String screenQuality;
+    public Boolean smartTv;
+    public Boolean wifi;
+    public Boolean voiceControl;
+    public Boolean hdr;
+    public Boolean bluetooth;
+    public Boolean ambiLight;
+    @PositiveOrZero
+    public Integer originalStock;
+    @PositiveOrZero
+    public Integer sold;
 
-    private String type;
-    private String brand;
-    private String name;
-    private Double price;
-    private Double availableSize;
-    // wat als er verschillende formaten zijn?
-    private Double refreshRate;
-    private String screenType;
-    private String screenQuality;
-    private Boolean smartTv;
-    private Boolean wifi;
-    private Boolean voiceControl;
-    private Boolean hdr;
-    private Boolean bluetooth;
-    private Boolean ambiLight;
-    private Integer originalStock;
-    private Integer sold;
-
-    public Television(Long id, String type, String brand, String name, Double price, Double availableSize, Double refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, Integer originalStock, Integer sold) {
-        this.id = id;
-        this.type = type;
-        this.brand = brand;
-        this.name = name;
-        this.price = price;
-        this.availableSize = availableSize;
-        this.refreshRate = refreshRate;
-        this.screenType = screenType;
-        this.screenQuality = screenQuality;
-        this.smartTv = smartTv;
-        this.wifi = wifi;
-        this.voiceControl = voiceControl;
-        this.hdr = hdr;
-        this.bluetooth = bluetooth;
-        this.ambiLight = ambiLight;
-        this.originalStock = originalStock;
-        this.sold = sold;
-    }
-
-    public Television() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getType() {
         return type;
