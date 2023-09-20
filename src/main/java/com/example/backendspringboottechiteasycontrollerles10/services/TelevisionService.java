@@ -51,7 +51,6 @@ public class TelevisionService {
     }
 
     public void deleteTelevision(@RequestParam Long id) {
-
         televisionRepository.deleteById(id);
     }
 
