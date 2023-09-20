@@ -6,6 +6,7 @@ import com.example.backendspringboottechiteasycontrollerles10.dtos.wallBrackets.
 import com.example.backendspringboottechiteasycontrollerles10.exceptions.RecordNotFoundException;
 import com.example.backendspringboottechiteasycontrollerles10.models.WallBracket;
 import com.example.backendspringboottechiteasycontrollerles10.repositories.WallBracketRepository;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class WallBracketService {
 
     private final WallBracketRepository wallBracketRepository;

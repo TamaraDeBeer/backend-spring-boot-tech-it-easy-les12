@@ -15,11 +15,8 @@ import java.util.List;
 
 @RestController
 public class TelevisionController {
-
     private final TelevisionService televisionService;
-
     public TelevisionController(TelevisionService televisionService) {
-
         this.televisionService = televisionService;
     }
 
@@ -40,9 +37,8 @@ public class TelevisionController {
         URI uri = URI.create(ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/" + televisionDto.getId()).toUriString());
-        return  ResponseEntity.created(uri).body(televisionDto);
+        return ResponseEntity.created(uri).body(televisionDto);
     }
-
 
     @PutMapping("/televisions/{id}")
     public ResponseEntity<TelevisionDto> updateTelevision(@PathVariable Long id, @RequestBody TelevisionDto updateTelevisionDto) {
