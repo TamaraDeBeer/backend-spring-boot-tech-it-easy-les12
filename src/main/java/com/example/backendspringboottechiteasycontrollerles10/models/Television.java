@@ -17,7 +17,7 @@ public class Television {
     private String name;
     private Double price;
     private Double availableSize;
-    // wat als er verschillende formaten zijn?
+    // wat als er verschillende formaten zijn? @ElementaryCollection
     private Double refreshRate;
     private String screenType;
     private String screenQuality;
