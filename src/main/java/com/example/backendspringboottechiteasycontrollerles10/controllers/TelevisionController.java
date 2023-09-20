@@ -1,7 +1,7 @@
 package com.example.backendspringboottechiteasycontrollerles10.controllers;
 
-import com.example.backendspringboottechiteasycontrollerles10.dto.TelevisionDto;
-import com.example.backendspringboottechiteasycontrollerles10.dto.TelevisionInputDto;
+import com.example.backendspringboottechiteasycontrollerles10.dtos.televisions.TelevisionDto;
+import com.example.backendspringboottechiteasycontrollerles10.dtos.televisions.TelevisionInputDto;
 import com.example.backendspringboottechiteasycontrollerles10.exceptions.RecordNotFoundException;
 import com.example.backendspringboottechiteasycontrollerles10.models.Television;
 import com.example.backendspringboottechiteasycontrollerles10.services.TelevisionService;

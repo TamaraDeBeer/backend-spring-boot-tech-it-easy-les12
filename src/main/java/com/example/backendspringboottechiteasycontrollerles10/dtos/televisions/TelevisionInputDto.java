@@ -1,16 +1,21 @@
-package com.example.backendspringboottechiteasycontrollerles10.dto;
+package com.example.backendspringboottechiteasycontrollerles10.dtos.televisions;
 
-import com.example.backendspringboottechiteasycontrollerles10.models.Television;
-import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 
-@Valid
-public class TelevisionDto {
-    public Long id;
+// bij requestbody
+public class TelevisionInputDto {
+    @NotEmpty
     public String type;
+    @NotEmpty
     public String brand;
+    @NotEmpty
     public String name;
+    @NotNull
+    @Digits(integer = 6, fraction = 2)
     public Double price;
     public Double availableSize;
+    @NotNull
+    @Digits(integer = 6, fraction = 2)
     public Double refreshRate;
     public String screenType;
     public String screenQuality;
@@ -20,16 +25,11 @@ public class TelevisionDto {
     public Boolean hdr;
     public Boolean bluetooth;
     public Boolean ambiLight;
+    @PositiveOrZero
     public Integer originalStock;
+    @PositiveOrZero
     public Integer sold;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getType() {
         return type;
@@ -158,6 +158,4 @@ public class TelevisionDto {
     public void setSold(Integer sold) {
         this.sold = sold;
     }
-
-
 }
