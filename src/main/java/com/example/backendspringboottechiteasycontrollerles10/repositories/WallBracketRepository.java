@@ -1,4 +1,7 @@
 package com.example.backendspringboottechiteasycontrollerles10.repositories;
 
-public interface WallBracketRepository {
+import com.example.backendspringboottechiteasycontrollerles10.models.WallBracket;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface WallBracketRepository extends JpaRepository<WallBracket, Long> {
 }
