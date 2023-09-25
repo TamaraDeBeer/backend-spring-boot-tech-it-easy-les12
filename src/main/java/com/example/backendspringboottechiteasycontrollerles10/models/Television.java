@@ -1,6 +1,7 @@
 package com.example.backendspringboottechiteasycontrollerles10.models;
 
 import com.example.backendspringboottechiteasycontrollerles10.dtos.remoteControls.RemoteControlDto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -32,6 +33,7 @@ public class Television {
 
     @OneToOne
     @JoinColumn(name = "compatible_remote_controls")
+    @JsonIgnore
     private RemoteControl remoteControl;
 
     @ManyToOne

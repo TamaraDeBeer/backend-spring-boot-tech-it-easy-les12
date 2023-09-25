@@ -58,10 +58,14 @@ public class TelevisionController {
     }
 
     @PutMapping("/televisions/{id}/remotecontrol")
-    public ResponseEntity<TelevisionDto> updateTelevision(@PathVariable Long id, @RequestBody idInputDto idInputDto) {
+    public ResponseEntity<TelevisionDto> addRemoteControl(@PathVariable Long id, @RequestBody idInputDto idInputDto) {
         televisionService.assignRemoteControllerToTelevision(id, idInputDto.id);
         return ResponseEntity.noContent().build();
     }
 
-
+    @PutMapping("/televisions/{id}/cimodule")
+    public ResponseEntity<TelevisionDto> addCiModule(@PathVariable Long id, @RequestBody idInputDto idInputDto) {
+        televisionService.assignCiModuleToTelevision(id, idInputDto.id);
+        return ResponseEntity.noContent().build();
+    }
 }

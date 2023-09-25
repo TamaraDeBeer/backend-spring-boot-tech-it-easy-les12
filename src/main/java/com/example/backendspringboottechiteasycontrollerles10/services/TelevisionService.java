@@ -85,6 +85,7 @@ public class TelevisionService {
             television1.setAmbiLight(updateTelevision.getAmbiLight());
             television1.setOriginalStock(updateTelevision.getOriginalStock());
             television1.setSold(updateTelevision.getSold());
+
             Television television2 = televisionRepository.save(television1);
             return fromTelevision(television2);
         }
@@ -147,7 +148,7 @@ public class TelevisionService {
             television.setRemoteControl(remoteControl);
             televisionRepository.save(television);
             } else {
-            throw new RecordNotFoundException("Er is geen televisie gevonden met id: " + id + "en/of geen afstandsbediening met id: " + remoteControlId);
+            throw new RecordNotFoundException("Er is geen televisie gevonden met id: " + id + " en/of geen afstandsbediening met id: " + remoteControlId);
         }
     }
 
@@ -161,7 +162,7 @@ public class TelevisionService {
             television.setCiModule(ciModule);
             televisionRepository.save(television);
         } else {
-            throw new RecordNotFoundException("Er is geen televisie gevonden met id: " + id + "en/of geen ci module met id: " + ciModuleId);
+            throw new RecordNotFoundException("Er is geen televisie gevonden met id: " + id + " en/of geen ci module met id: " + ciModuleId);
         }
     }
 }
