@@ -23,8 +23,8 @@ public class TelevisionDto {
     public Boolean ambiLight;
     public Integer originalStock;
     public Integer sold;
-    private CiModuleDto ciModuleDto;
-    private RemoteControlDto remoteControlDto;
+    public CiModuleDto ciModuleDto;
+    public RemoteControlDto remoteControlDto;
 
     public TelevisionDto(Long id, String type, String brand, String name, Double price, Double availableSize, Double refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, Integer originalStock, Integer sold, CiModuleDto ciModuleDto, RemoteControlDto remoteControlDto) {
         this.id = id;

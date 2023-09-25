@@ -43,51 +43,51 @@ public class Television {
     @ManyToMany
     private List<WallBracket> wallBracketsList;
 
-    public Television(Long id, String type, String brand, String name, Double price, Double availableSize, Double refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, Integer originalStock, Integer sold) {
-        this.id = id;
-        this.type = type;
-        this.brand = brand;
-        this.name = name;
-        this.price = price;
-        this.availableSize = availableSize;
-        this.refreshRate = refreshRate;
-        this.screenType = screenType;
-        this.screenQuality = screenQuality;
-        this.smartTv = smartTv;
-        this.wifi = wifi;
-        this.voiceControl = voiceControl;
-        this.hdr = hdr;
-        this.bluetooth = bluetooth;
-        this.ambiLight = ambiLight;
-        this.originalStock = originalStock;
-        this.sold = sold;
-    }
-
-    public Television(Long id, String type, String brand, String name, Double price, Double availableSize, Double refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, Integer originalStock, Integer sold, RemoteControl remoteControl, CiModule ciModule, List<WallBracket> wallBracketsList) {
-        this.id = id;
-        this.type = type;
-        this.brand = brand;
-        this.name = name;
-        this.price = price;
-        this.availableSize = availableSize;
-        this.refreshRate = refreshRate;
-        this.screenType = screenType;
-        this.screenQuality = screenQuality;
-        this.smartTv = smartTv;
-        this.wifi = wifi;
-        this.voiceControl = voiceControl;
-        this.hdr = hdr;
-        this.bluetooth = bluetooth;
-        this.ambiLight = ambiLight;
-        this.originalStock = originalStock;
-        this.sold = sold;
-        this.remoteControl = remoteControl;
-        this.ciModule = ciModule;
-        this.wallBracketsList = wallBracketsList;
-    }
-
-    public Television() {
-    }
+//    public Television(Long id, String type, String brand, String name, Double price, Double availableSize, Double refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, Integer originalStock, Integer sold) {
+//        this.id = id;
+//        this.type = type;
+//        this.brand = brand;
+//        this.name = name;
+//        this.price = price;
+//        this.availableSize = availableSize;
+//        this.refreshRate = refreshRate;
+//        this.screenType = screenType;
+//        this.screenQuality = screenQuality;
+//        this.smartTv = smartTv;
+//        this.wifi = wifi;
+//        this.voiceControl = voiceControl;
+//        this.hdr = hdr;
+//        this.bluetooth = bluetooth;
+//        this.ambiLight = ambiLight;
+//        this.originalStock = originalStock;
+//        this.sold = sold;
+//    }
+//
+//    public Television(Long id, String type, String brand, String name, Double price, Double availableSize, Double refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, Integer originalStock, Integer sold, RemoteControl remoteControl, CiModule ciModule, List<WallBracket> wallBracketsList) {
+//        this.id = id;
+//        this.type = type;
+//        this.brand = brand;
+//        this.name = name;
+//        this.price = price;
+//        this.availableSize = availableSize;
+//        this.refreshRate = refreshRate;
+//        this.screenType = screenType;
+//        this.screenQuality = screenQuality;
+//        this.smartTv = smartTv;
+//        this.wifi = wifi;
+//        this.voiceControl = voiceControl;
+//        this.hdr = hdr;
+//        this.bluetooth = bluetooth;
+//        this.ambiLight = ambiLight;
+//        this.originalStock = originalStock;
+//        this.sold = sold;
+//        this.remoteControl = remoteControl;
+//        this.ciModule = ciModule;
+//        this.wallBracketsList = wallBracketsList;
+//    }
+//
+//    public Television() {
+//    }
 
     public Long getId() {
         return id;

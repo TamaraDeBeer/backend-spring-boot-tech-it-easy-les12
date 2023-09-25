@@ -18,26 +18,26 @@ public class RemoteControl {
     @OneToOne (mappedBy = "remoteControl")
     private Television television;
 
-    public RemoteControl(Long id, String name, String brand, String batteryType, Double price, Integer originalStock, String compatibleWith) {
-        this.id = id;
-        this.name = name;
-        this.brand = brand;
-        this.batteryType = batteryType;
-        this.price = price;
-        this.originalStock = originalStock;
-        this.compatibleWith = compatibleWith;
-    }
-
-    public RemoteControl(Long id, String name, String brand, String batteryType, Double price, Integer originalStock, String compatibleWith, Television television) {
-        this.id = id;
-        this.name = name;
-        this.brand = brand;
-        this.batteryType = batteryType;
-        this.price = price;
-        this.originalStock = originalStock;
-        this.compatibleWith = compatibleWith;
-        this.television = television;
-    }
+//    public RemoteControl(Long id, String name, String brand, String batteryType, Double price, Integer originalStock, String compatibleWith) {
+//        this.id = id;
+//        this.name = name;
+//        this.brand = brand;
+//        this.batteryType = batteryType;
+//        this.price = price;
+//        this.originalStock = originalStock;
+//        this.compatibleWith = compatibleWith;
+//    }
+//
+//    public RemoteControl(Long id, String name, String brand, String batteryType, Double price, Integer originalStock, String compatibleWith, Television television) {
+//        this.id = id;
+//        this.name = name;
+//        this.brand = brand;
+//        this.batteryType = batteryType;
+//        this.price = price;
+//        this.originalStock = originalStock;
+//        this.compatibleWith = compatibleWith;
+//        this.television = television;
+//    }
 
     public RemoteControl(){}
 
