@@ -1,9 +1,6 @@
 package com.example.backendspringboottechiteasycontrollerles10.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table (name = "remote_controls")
@@ -17,6 +14,9 @@ public class RemoteControl {
     private Double price;
     private Integer originalStock;
     private String compatibleWith;
+
+    @OneToOne (mappedBy = "remoteControl")
+    private Television television;
 
     public RemoteControl(Long id, String name, String brand, String batteryType, Double price, Integer originalStock, String compatibleWith) {
         this.id = id;

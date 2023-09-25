@@ -1,9 +1,8 @@
 package com.example.backendspringboottechiteasycontrollerles10.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table (name = "televisions")
@@ -29,6 +28,17 @@ public class Television {
     private Boolean ambiLight;
     private Integer originalStock;
     private Integer sold;
+
+    @OneToOne
+    @JoinColumn(name = "compatible_remote_controls")
+    private RemoteControl remoteControl;
+
+    @ManyToOne
+    @JoinColumn(name = "compatible_ci_module")
+    private CiModule ciModule;
+
+    @ManyToMany
+    private List<WallBracket> wallBracketsList;
 
     public Television(Long id, String type, String brand, String name, Double price, Double availableSize, Double refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, Integer originalStock, Integer sold) {
         this.id = id;

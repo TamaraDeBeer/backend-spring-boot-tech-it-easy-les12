@@ -1,9 +1,8 @@
 package com.example.backendspringboottechiteasycontrollerles10.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table (name = "wall_brackets")
@@ -16,6 +15,9 @@ public class WallBracket {
     private Boolean adjustable;
     private Double price;
 
+    @ManyToMany (mappedBy = "wallBracketsList")
+    private List<Television> televisionsList;
+
     public WallBracket(Long id, String name, String size, Boolean adjustable, Double price) {
         this.id = id;
         this.name = name;
@@ -23,7 +25,6 @@ public class WallBracket {
         this.adjustable = adjustable;
         this.price = price;
     }
-
     public WallBracket() {
     }
 
