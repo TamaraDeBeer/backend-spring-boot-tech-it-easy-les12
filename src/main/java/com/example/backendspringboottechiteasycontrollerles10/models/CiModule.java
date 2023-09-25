@@ -57,4 +57,12 @@ public class CiModule {
     public void setPrice(Double price) {
         this.price = price;
     }
+
+    public List<Television> getTelevisionsList() {
+        return televisionsList;
+    }
+
+    public void setTelevisionsList(List<Television> televisionsList) {
+        this.televisionsList = televisionsList;
+    }
 }

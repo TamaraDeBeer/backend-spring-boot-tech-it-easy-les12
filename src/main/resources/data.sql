@@ -34,14 +34,14 @@ UPDATE televisions SET compatible_remote_controls = 7003 WHERE id = 5003;
 UPDATE televisions SET compatible_remote_controls = 7004 WHERE id = 5001;
 UPDATE televisions SET compatible_remote_controls = 7005 WHERE id = 5002;
 
-UPDATE televisions SET compatible_ci_module = 6000 WHERE id = 7000;
-UPDATE televisions SET compatible_ci_module = 6000 WHERE id = 7001;
-UPDATE televisions SET compatible_ci_module = 6000 WHERE id = 7002;
-UPDATE televisions SET compatible_ci_module = 6000 WHERE id = 7003;
-UPDATE televisions SET compatible_ci_module = 6000 WHERE id = 7004;
-UPDATE televisions SET compatible_ci_module = 6001 WHERE id = 7000;
-UPDATE televisions SET compatible_ci_module = 6001 WHERE id = 7003;
-UPDATE televisions SET compatible_ci_module = 6001 WHERE id = 7005;
+UPDATE televisions SET compatible_ci_module = 6000 WHERE id = 5000;
+UPDATE televisions SET compatible_ci_module = 6000 WHERE id = 5001;
+UPDATE televisions SET compatible_ci_module = 6000 WHERE id = 5002;
+UPDATE televisions SET compatible_ci_module = 6000 WHERE id = 5003;
+UPDATE televisions SET compatible_ci_module = 6000 WHERE id = 5004;
+UPDATE televisions SET compatible_ci_module = 6001 WHERE id = 5000;
+UPDATE televisions SET compatible_ci_module = 6001 WHERE id = 5003;
+UPDATE televisions SET compatible_ci_module = 6001 WHERE id = 5005;
 
 
 INSERT INTO televisions_wall_brackets_list (televisions_list_id, wall_brackets_list_id)

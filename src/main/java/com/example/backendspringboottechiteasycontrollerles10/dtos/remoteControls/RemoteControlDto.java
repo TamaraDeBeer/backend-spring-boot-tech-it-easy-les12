@@ -12,6 +12,19 @@ public class RemoteControlDto {
     public Integer originalStock;
     public String compatibleWith;
 
+    public RemoteControlDto(Long id, String name, String brand, String batteryType, Double price, Integer originalStock, String compatibleWith) {
+        this.id = id;
+        this.name = name;
+        this.brand = brand;
+        this.batteryType = batteryType;
+        this.price = price;
+        this.originalStock = originalStock;
+        this.compatibleWith = compatibleWith;
+    }
+
+    public RemoteControlDto() {
+    }
+
     public Long getId() {
         return id;
     }

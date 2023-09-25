@@ -1,5 +1,9 @@
 package com.example.backendspringboottechiteasycontrollerles10.dtos.televisions;
 
+import com.example.backendspringboottechiteasycontrollerles10.dtos.ciModules.CiModuleDto;
+import com.example.backendspringboottechiteasycontrollerles10.dtos.remoteControls.RemoteControlDto;
+import com.example.backendspringboottechiteasycontrollerles10.models.CiModule;
+import com.example.backendspringboottechiteasycontrollerles10.models.RemoteControl;
 import jakarta.validation.constraints.*;
 
 // bij requestbody
@@ -30,6 +34,32 @@ public class TelevisionInputDto {
     @PositiveOrZero
     public Integer sold;
 
+    private CiModuleDto ciModuleDto;
+    private RemoteControlDto remoteControlDto;
+
+    public TelevisionInputDto(String type, String brand, String name, Double price, Double availableSize, Double refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, Integer originalStock, Integer sold, CiModuleDto ciModuleDto, RemoteControlDto remoteControlDto) {
+        this.type = type;
+        this.brand = brand;
+        this.name = name;
+        this.price = price;
+        this.availableSize = availableSize;
+        this.refreshRate = refreshRate;
+        this.screenType = screenType;
+        this.screenQuality = screenQuality;
+        this.smartTv = smartTv;
+        this.wifi = wifi;
+        this.voiceControl = voiceControl;
+        this.hdr = hdr;
+        this.bluetooth = bluetooth;
+        this.ambiLight = ambiLight;
+        this.originalStock = originalStock;
+        this.sold = sold;
+        this.ciModuleDto = ciModuleDto;
+        this.remoteControlDto = remoteControlDto;
+    }
+
+    public TelevisionInputDto() {
+    }
 
     public String getType() {
         return type;
@@ -157,5 +187,21 @@ public class TelevisionInputDto {
 
     public void setSold(Integer sold) {
         this.sold = sold;
+    }
+
+    public CiModuleDto getCiModuleDto() {
+        return ciModuleDto;
+    }
+
+    public void setCiModuleDto(CiModuleDto ciModuleDto) {
+        this.ciModuleDto = ciModuleDto;
+    }
+
+    public RemoteControlDto getRemoteControlDto() {
+        return remoteControlDto;
+    }
+
+    public void setRemoteControlDto(RemoteControlDto remoteControlDto) {
+        this.remoteControlDto = remoteControlDto;
     }
 }

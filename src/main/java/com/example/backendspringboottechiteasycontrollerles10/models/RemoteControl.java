@@ -28,6 +28,17 @@ public class RemoteControl {
         this.compatibleWith = compatibleWith;
     }
 
+    public RemoteControl(Long id, String name, String brand, String batteryType, Double price, Integer originalStock, String compatibleWith, Television television) {
+        this.id = id;
+        this.name = name;
+        this.brand = brand;
+        this.batteryType = batteryType;
+        this.price = price;
+        this.originalStock = originalStock;
+        this.compatibleWith = compatibleWith;
+        this.television = television;
+    }
+
     public RemoteControl(){}
 
     public String getName() {
@@ -84,5 +95,13 @@ public class RemoteControl {
 
     public Long getId() {
         return id;
+    }
+
+    public Television getTelevision() {
+        return television;
+    }
+
+    public void setTelevision(Television television) {
+        this.television = television;
     }
 }

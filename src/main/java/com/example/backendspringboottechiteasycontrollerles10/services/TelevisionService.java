@@ -4,6 +4,8 @@ import com.example.backendspringboottechiteasycontrollerles10.dtos.televisions.T
 import com.example.backendspringboottechiteasycontrollerles10.dtos.televisions.TelevisionInputDto;
 import com.example.backendspringboottechiteasycontrollerles10.exceptions.RecordNotFoundException;
 import com.example.backendspringboottechiteasycontrollerles10.models.Television;
+import com.example.backendspringboottechiteasycontrollerles10.repositories.CiModuleRepository;
+import com.example.backendspringboottechiteasycontrollerles10.repositories.RemoteControlRepository;
 import com.example.backendspringboottechiteasycontrollerles10.repositories.TelevisionRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,11 +18,18 @@ import java.util.Optional;
 
 @Service
 public class TelevisionService {
-
     private final TelevisionRepository televisionRepository;
+    private final RemoteControlRepository remoteControlRepository;
+    private final RemoteControlService remoteControlService;
+    private final CiModuleRepository ciModuleRepository;
+    private final CiModuleService ciModuleService;
 
-    public TelevisionService(TelevisionRepository televisionRepository) {
+    public TelevisionService(TelevisionRepository televisionRepository, RemoteControlRepository remoteControlRepository, RemoteControlService remoteControlService, CiModuleRepository ciModuleRepository, CiModuleService ciModuleService) {
         this.televisionRepository = televisionRepository;
+        this.remoteControlRepository = remoteControlRepository;
+        this.remoteControlService = remoteControlService;
+        this.ciModuleRepository = ciModuleRepository;
+        this.ciModuleService = ciModuleService;
     }
 
     public List<TelevisionDto> getAllTelevisions() {
@@ -84,45 +93,75 @@ public class TelevisionService {
     // stap 13 t/m 16 - maar de functie werkte niet bij aanroepen wanneer deze zich in de TelevisionDto.java bevond dus heb hem hierheen verplaatst.
     public TelevisionDto fromTelevision(Television television) {
         var televisionDto = new TelevisionDto();
-        televisionDto.id = television.getId();
-        televisionDto.type = television.getType();
-        televisionDto.brand = television.getBrand();
-        televisionDto.name = television.getName();
-        televisionDto.price = television.getPrice();
-        televisionDto.availableSize = television.getAvailableSize();
-        televisionDto.refreshRate = television.getRefreshRate();
-        televisionDto.screenType = television.getScreenType();
-        televisionDto.screenQuality = television.getScreenQuality();
-        televisionDto.smartTv = television.getSmartTv();
-        televisionDto.wifi = television.getWifi();
-        televisionDto.voiceControl = television.getVoiceControl();
-        televisionDto.hdr = television.getHdr();
-        televisionDto.bluetooth = television.getBluetooth();
-        televisionDto.ambiLight = television.getAmbiLight();
-        televisionDto.originalStock = television.getOriginalStock();
-        televisionDto.sold = television.getSold();
+        televisionDto.setId(television.getId());
+        televisionDto.setType(television.getType());
+        televisionDto.setBrand(television.getBrand());
+        televisionDto.setName(television.getName());
+        televisionDto.setPrice(television.getPrice());
+        televisionDto.setAvailableSize(television.getAvailableSize());
+        televisionDto.setRefreshRate(television.getRefreshRate());
+        televisionDto.setScreenType(television.getScreenType());
+        televisionDto.setScreenQuality(television.getScreenQuality());
+        televisionDto.setSmartTv(television.getSmartTv());
+        televisionDto.setWifi(television.getWifi());
+        televisionDto.setVoiceControl(television.getVoiceControl());
+        televisionDto.setHdr(television.getHdr());
+        televisionDto.setBluetooth(television.getBluetooth());
+        televisionDto.setAmbiLight(television.getAmbiLight());
+        televisionDto.setOriginalStock(television.getOriginalStock());
+        televisionDto.setSold(television.getSold());
+
         return televisionDto;
     }
 
     // stap 19 t/m 21 - maar de functie werkte niet bij aanroepen wanneer deze zich in de TelevisionInputDto.java bevond dus heb hem hierheen verplaatst.
     public Television toTelevision(TelevisionInputDto televisionInputDto) {
         var television = new Television();
-        television.setType(televisionInputDto.type);
-        television.setBrand(televisionInputDto.brand);
-        television.setName(televisionInputDto.name);
-        television.setPrice(televisionInputDto.price);
-        television.setAvailableSize(televisionInputDto.availableSize);
-        television.setRefreshRate(televisionInputDto.refreshRate);
-        television.setScreenType(televisionInputDto.screenType);
-        television.setScreenQuality(televisionInputDto.screenQuality);
-        television.setSmartTv(televisionInputDto.smartTv);
-        television.setWifi(televisionInputDto.wifi);
-        television.setVoiceControl(televisionInputDto.voiceControl);
-        television.setHdr(televisionInputDto.hdr);
-        television.setBluetooth(televisionInputDto.bluetooth);
-        television.setAmbiLight(televisionInputDto.ambiLight);
-        television.setOriginalStock(televisionInputDto.originalStock);
-        television.setSold(televisionInputDto.sold);
+        television.setType(televisionInputDto.getType());
+        television.setBrand(televisionInputDto.getBrand());
+        television.setName(televisionInputDto.getName());
+        television.setPrice(televisionInputDto.getPrice());
+        television.setAvailableSize(televisionInputDto.getAvailableSize());
+        television.setRefreshRate(televisionInputDto.getRefreshRate());
+        television.setScreenType(televisionInputDto.getScreenType());
+        television.setScreenQuality(televisionInputDto.getScreenQuality());
+        television.setSmartTv(televisionInputDto.getSmartTv());
+        television.setWifi(televisionInputDto.getWifi());
+        television.setVoiceControl(televisionInputDto.getVoiceControl());
+        television.setHdr(televisionInputDto.getHdr());
+        television.setBluetooth(televisionInputDto.getBluetooth());
+        television.setAmbiLight(televisionInputDto.getAmbiLight());
+        television.setOriginalStock(televisionInputDto.getOriginalStock());
+        television.setSold(televisionInputDto.getSold());
+
         return television;
+    }
+
+    public void assignRemoteControllerToTelevision (Long id, Long remoteControlId) {
+        var optionalTelevision = televisionRepository.findById(id);
+        var optionalRemoteControl = remoteControlRepository.findById(remoteControlId);
+
+        if (optionalTelevision.isPresent() && optionalRemoteControl.isPresent()) {
+            var television = optionalTelevision.get();
+            var remoteControl = optionalRemoteControl.get();
+            television.setRemoteControl(remoteControl);
+            televisionRepository.save(television);
+            } else {
+            throw new RecordNotFoundException("Er is geen televisie gevonden met id: " + id + "en/of geen afstandsbediening met id: " + remoteControlId);
+        }
+    }
+
+    public void assignCiModuleToTelevision (Long id, Long ciModuleId) {
+        var optionalTelevision = televisionRepository.findById(id);
+        var optionalCiModule = ciModuleRepository.findById(ciModuleId);
+
+        if (optionalTelevision.isPresent() && optionalCiModule.isPresent()) {
+            var television = optionalTelevision.get();
+            var ciModule = optionalCiModule.get();
+            television.setCiModule(ciModule);
+            televisionRepository.save(television);
+        } else {
+            throw new RecordNotFoundException("Er is geen televisie gevonden met id: " + id + "en/of geen ci module met id: " + ciModuleId);
+        }
     }
 }

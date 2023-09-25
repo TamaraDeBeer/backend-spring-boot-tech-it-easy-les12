@@ -2,6 +2,7 @@ package com.example.backendspringboottechiteasycontrollerles10.controllers;
 
 import com.example.backendspringboottechiteasycontrollerles10.dtos.televisions.TelevisionDto;
 import com.example.backendspringboottechiteasycontrollerles10.dtos.televisions.TelevisionInputDto;
+import com.example.backendspringboottechiteasycontrollerles10.dtos.idInputDto;
 import com.example.backendspringboottechiteasycontrollerles10.exceptions.RecordNotFoundException;
 import com.example.backendspringboottechiteasycontrollerles10.models.Television;
 import com.example.backendspringboottechiteasycontrollerles10.services.TelevisionService;
@@ -56,5 +57,11 @@ public class TelevisionController {
         return ResponseEntity.noContent().build();
     }
 
-    // @PatchMapping snap ik niet.
+    @PutMapping("/televisions/{id}/remotecontrol")
+    public ResponseEntity<TelevisionDto> updateTelevision(@PathVariable Long id, @RequestBody idInputDto idInputDto) {
+        televisionService.assignRemoteControllerToTelevision(id, idInputDto.id);
+        return ResponseEntity.noContent().build();
+    }
+
+
 }
