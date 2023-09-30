@@ -70,11 +70,11 @@ public class TelevisionController {
     }
 
     // how can I make the link the between television and wall bracket?
-    @PutMapping("/televisions/{id}/wallbracket")
-    public ResponseEntity<TelevisionDto> addWallBracket(@PathVariable Long id, @RequestBody idInputDto idInputDto) {
-        televisionService.assignWallBracketToTelevision(id, idInputDto.id);
-        return ResponseEntity.noContent().build();
-    }
+//    @PutMapping("/televisions/{id}/wallbracket")
+//    public ResponseEntity<TelevisionDto> addWallBracket(@PathVariable Long id, @RequestBody idInputDto idInputDto) {
+//        televisionService.assignWallBracketToTelevision(id, idInputDto.id);
+//        return ResponseEntity.noContent().build();
+//    }
 
 
 }
