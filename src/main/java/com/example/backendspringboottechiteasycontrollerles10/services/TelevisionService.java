@@ -111,6 +111,9 @@ public class TelevisionService {
         televisionDto.setAmbiLight(television.getAmbiLight());
         televisionDto.setOriginalStock(television.getOriginalStock());
         televisionDto.setSold(television.getSold());
+        televisionDto.setRemoteControlDto(remoteControlService.fromRemoteControl(television.getRemoteControl()));
+
+
 
         return televisionDto;
     }

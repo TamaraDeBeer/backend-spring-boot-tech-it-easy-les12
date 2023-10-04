@@ -32,7 +32,7 @@ UPDATE televisions SET compatible_remote_controls = 7001 WHERE id = 5005;
 UPDATE televisions SET compatible_remote_controls = 7002 WHERE id = 5000;
 UPDATE televisions SET compatible_remote_controls = 7003 WHERE id = 5003;
 UPDATE televisions SET compatible_remote_controls = 7004 WHERE id = 5001;
-UPDATE televisions SET compatible_remote_controls = 7005 WHERE id = 5002;
+-- UPDATE televisions SET compatible_remote_controls = 7005 WHERE id = 5002;
 
 UPDATE televisions SET compatible_ci_module = 6000 WHERE id = 5000;
 UPDATE televisions SET compatible_ci_module = 6000 WHERE id = 5001;

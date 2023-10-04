@@ -2,7 +2,11 @@ package com.example.backendspringboottechiteasycontrollerles10.dtos.televisions;
 
 import com.example.backendspringboottechiteasycontrollerles10.dtos.ciModules.CiModuleDto;
 import com.example.backendspringboottechiteasycontrollerles10.dtos.remoteControls.RemoteControlDto;
+import com.example.backendspringboottechiteasycontrollerles10.dtos.wallBrackets.WallBracketDto;
+import com.example.backendspringboottechiteasycontrollerles10.models.WallBracket;
 import jakarta.validation.Valid;
+
+import java.util.List;
 
 @Valid
 public class TelevisionDto {
@@ -26,7 +30,9 @@ public class TelevisionDto {
     public CiModuleDto ciModuleDto;
     public RemoteControlDto remoteControlDto;
 
-    public TelevisionDto(Long id, String type, String brand, String name, Double price, Double availableSize, Double refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, Integer originalStock, Integer sold, CiModuleDto ciModuleDto, RemoteControlDto remoteControlDto) {
+    private List<WallBracketDto> wallBracketDtos;
+
+    public TelevisionDto(Long id, String type, String brand, String name, Double price, Double availableSize, Double refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, Integer originalStock, Integer sold, CiModuleDto ciModuleDto, RemoteControlDto remoteControlDto, List<WallBracketDto> wallBracketDto) {
         this.id = id;
         this.type = type;
         this.brand = brand;
@@ -46,6 +52,7 @@ public class TelevisionDto {
         this.sold = sold;
         this.remoteControlDto = remoteControlDto;
         this.ciModuleDto = ciModuleDto;
+        this.wallBracketDtos = wallBracketDto;
     }
 
     public TelevisionDto() {
@@ -201,5 +208,13 @@ public class TelevisionDto {
 
     public void setRemoteControlDto(RemoteControlDto remoteControlDto) {
         this.remoteControlDto = remoteControlDto;
+    }
+
+    public List<WallBracketDto> getWallBracketDtos() {
+        return wallBracketDtos;
+    }
+
+    public void setWallBracketDtos(List<WallBracketDto> wallBracketDtos) {
+        this.wallBracketDtos = wallBracketDtos;
     }
 }
