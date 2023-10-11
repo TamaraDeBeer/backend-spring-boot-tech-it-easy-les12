@@ -77,6 +77,11 @@ public class WallBracketService {
         wallBracketDto.size = wallBracket.getSize();
         wallBracketDto.adjustable = wallBracket.getAdjustable();
         wallBracketDto.price = wallBracket.getPrice();
+
+        if(wallBracket.getTelevisionsList() != null) {
+            wallBracketDto.televisionsId = wallBracket.getTelevisionsList().get(0).getId();
+        }
+
         return wallBracketDto;
     }
 

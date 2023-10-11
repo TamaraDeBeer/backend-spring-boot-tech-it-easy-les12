@@ -1,6 +1,5 @@
 package com.example.backendspringboottechiteasycontrollerles10.services;
 
-import ch.qos.logback.core.pattern.parser.OptionTokenizer;
 import com.example.backendspringboottechiteasycontrollerles10.dtos.remoteControls.RemoteControlDto;
 import com.example.backendspringboottechiteasycontrollerles10.dtos.remoteControls.RemoteControlInputDto;
 import com.example.backendspringboottechiteasycontrollerles10.exceptions.RecordNotFoundException;
@@ -81,6 +80,11 @@ public class RemoteControlService {
         remoteControlDto.price = remoteControl.getPrice();
         remoteControlDto.originalStock = remoteControl.getOriginalStock();
         remoteControlDto.compatibleWith = remoteControl.getCompatibleWith();
+
+        if (remoteControl.getTelevision() != null) {
+            remoteControlDto.televisionId = remoteControl.getTelevision().getId();
+        }
+
         return remoteControlDto;
     }
 

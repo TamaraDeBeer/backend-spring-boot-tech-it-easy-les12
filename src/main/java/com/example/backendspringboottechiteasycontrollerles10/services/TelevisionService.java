@@ -4,9 +4,11 @@ import com.example.backendspringboottechiteasycontrollerles10.dtos.televisions.T
 import com.example.backendspringboottechiteasycontrollerles10.dtos.televisions.TelevisionInputDto;
 import com.example.backendspringboottechiteasycontrollerles10.exceptions.RecordNotFoundException;
 import com.example.backendspringboottechiteasycontrollerles10.models.Television;
+import com.example.backendspringboottechiteasycontrollerles10.models.WallBracket;
 import com.example.backendspringboottechiteasycontrollerles10.repositories.CiModuleRepository;
 import com.example.backendspringboottechiteasycontrollerles10.repositories.RemoteControlRepository;
 import com.example.backendspringboottechiteasycontrollerles10.repositories.TelevisionRepository;
+import com.example.backendspringboottechiteasycontrollerles10.repositories.WallBracketRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,13 +25,17 @@ public class TelevisionService {
     private final RemoteControlService remoteControlService;
     private final CiModuleRepository ciModuleRepository;
     private final CiModuleService ciModuleService;
+    private final WallBracketService wallBracketService;
+    private final WallBracketRepository wallBracketRepository;
 
-    public TelevisionService(TelevisionRepository televisionRepository, RemoteControlRepository remoteControlRepository, RemoteControlService remoteControlService, CiModuleRepository ciModuleRepository, CiModuleService ciModuleService) {
+    public TelevisionService(TelevisionRepository televisionRepository, RemoteControlRepository remoteControlRepository, RemoteControlService remoteControlService, CiModuleRepository ciModuleRepository, CiModuleService ciModuleService, WallBracketService wallBracketService, WallBracketRepository wallBracketRepository) {
         this.televisionRepository = televisionRepository;
         this.remoteControlRepository = remoteControlRepository;
         this.remoteControlService = remoteControlService;
         this.ciModuleRepository = ciModuleRepository;
         this.ciModuleService = ciModuleService;
+        this.wallBracketService = wallBracketService;
+        this.wallBracketRepository = wallBracketRepository;
     }
 
     public List<TelevisionDto> getAllTelevisions() {
@@ -111,9 +117,18 @@ public class TelevisionService {
         televisionDto.setAmbiLight(television.getAmbiLight());
         televisionDto.setOriginalStock(television.getOriginalStock());
         televisionDto.setSold(television.getSold());
-        televisionDto.setRemoteControlDto(remoteControlService.fromRemoteControl(television.getRemoteControl()));
 
+        if(television.getRemoteControl() != null) {
+            televisionDto.setRemoteControlDto(remoteControlService.fromRemoteControl(television.getRemoteControl()));
+        }
 
+        if(television.getCiModule() != null) {
+            televisionDto.setCiModuleDto(ciModuleService.fromCiModule(television.getCiModule()));
+        }
+
+//        if(television.getWallBracketsList() != null) {
+//            televisionDto.setWallBracketDtoList(wallBracketService.fromWallBracketList(television.getWallBracketsList()));
+//        }
 
         return televisionDto;
     }
@@ -168,4 +183,21 @@ public class TelevisionService {
             throw new RecordNotFoundException("Er is geen televisie gevonden met id: " + id + " en/of geen ci module met id: " + ciModuleId);
         }
     }
+
+//    public void assignWallBracketToTelevision (Long id, Long wallBracketsId) {
+//        var optionalTelevision = televisionRepository.findById(id);
+//        var optionalWallBracket = wallBracketRepository.findById(wallBracketsId);
+//
+//        if (optionalTelevision.isPresent() && optionalWallBracket.isPresent()) {
+//            var television = optionalTelevision.get();
+//            var wallBracket = optionalWallBracket.get();
+//            television.setWallBracketsList(wallBracket);
+//            televisionRepository.save(television);
+//        } else {
+//            throw new RecordNotFoundException("Er is geen televisie gevonden met id: " + id + " en/of geen muurbeugel met id: " + wallBracketsId);
+//        }
+//    }
+
+
+
 }

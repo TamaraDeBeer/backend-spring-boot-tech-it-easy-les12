@@ -9,6 +9,19 @@ public class WallBracketDto {
     public String size;
     public Boolean adjustable;
     public Double price;
+    public Long televisionsId;
+
+    public WallBracketDto(Long id, String name, String size, Boolean adjustable, Double price, Long televisionsId) {
+        this.id = id;
+        this.name = name;
+        this.size = size;
+        this.adjustable = adjustable;
+        this.price = price;
+        this.televisionsId = televisionsId;
+    }
+
+    public WallBracketDto() {
+    }
 
     public Long getId() {
         return id;
@@ -48,5 +61,13 @@ public class WallBracketDto {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Long getTelevisionsId() {
+        return televisionsId;
+    }
+
+    public void setTelevisionsId(Long televisionsId) {
+        this.televisionsId = televisionsId;
     }
 }

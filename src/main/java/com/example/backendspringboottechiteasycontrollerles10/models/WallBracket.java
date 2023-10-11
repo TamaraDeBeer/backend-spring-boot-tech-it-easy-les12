@@ -18,12 +18,13 @@ public class WallBracket {
     @ManyToMany (mappedBy = "wallBracketsList")
     private List<Television> televisionsList;
 
-    public WallBracket(Long id, String name, String size, Boolean adjustable, Double price) {
+    public WallBracket(Long id, String name, String size, Boolean adjustable, Double price, List<Television> televisionsList) {
         this.id = id;
         this.name = name;
         this.size = size;
         this.adjustable = adjustable;
         this.price = price;
+        this.televisionsList = televisionsList;
     }
 
     public WallBracket() {
@@ -76,4 +77,5 @@ public class WallBracket {
     public void setTelevisionsList(List<Television> televisionsList) {
         this.televisionsList = televisionsList;
     }
+
 }

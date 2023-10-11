@@ -68,17 +68,21 @@ public class CiModuleService {
         }
     }
 
-    // stap 13 t/m 16 - maar de functie werkte niet bij aanroepen wanneer deze zich in de TelevisionDto.java bevond dus heb hem hierheen verplaatst.
+
     public CiModuleDto fromCiModule(CiModule ciModule) {
         var ciModuleDto = new CiModuleDto();
         ciModuleDto.id = ciModule.getId();
         ciModuleDto.name = ciModule.getName();
         ciModuleDto.type = ciModule.getType();
         ciModuleDto.price = ciModule.getPrice();
+
+//        if(ciModule.getTelevisionsList() != null) {
+//            ciModuleDto.televisionId = ciModule.getTelevisionsList();
+//        }
+
         return ciModuleDto;
     }
 
-    // stap 19 t/m 21 - maar de functie werkte niet bij aanroepen wanneer deze zich in de TelevisionInputDto.java bevond dus heb hem hierheen verplaatst.
     public CiModule toCiModule(CiModuleInputDto ciModuleInputDto) {
         var ciModule = new CiModule();
         ciModule.setType(ciModuleInputDto.type);

@@ -33,7 +33,6 @@ public class TelevisionInputDto {
     public Integer originalStock;
     @PositiveOrZero
     public Integer sold;
-
     private CiModuleDto ciModuleDto;
     private RemoteControlDto remoteControlDto;
 

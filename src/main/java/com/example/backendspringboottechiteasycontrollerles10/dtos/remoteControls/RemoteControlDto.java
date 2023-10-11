@@ -1,5 +1,6 @@
 package com.example.backendspringboottechiteasycontrollerles10.dtos.remoteControls;
 
+import com.example.backendspringboottechiteasycontrollerles10.dtos.televisions.TelevisionDto;
 import jakarta.validation.Valid;
 
 @Valid
@@ -11,8 +12,9 @@ public class RemoteControlDto {
     public Double price;
     public Integer originalStock;
     public String compatibleWith;
+    public Long televisionId;
 
-    public RemoteControlDto(Long id, String name, String brand, String batteryType, Double price, Integer originalStock, String compatibleWith) {
+    public RemoteControlDto(Long id, String name, String brand, String batteryType, Double price, Integer originalStock, String compatibleWith, Long televisionId) {
         this.id = id;
         this.name = name;
         this.brand = brand;
@@ -20,6 +22,7 @@ public class RemoteControlDto {
         this.price = price;
         this.originalStock = originalStock;
         this.compatibleWith = compatibleWith;
+        this.televisionId = televisionId;
     }
 
     public RemoteControlDto() {
@@ -79,5 +82,13 @@ public class RemoteControlDto {
 
     public void setCompatibleWith(String compatibleWith) {
         this.compatibleWith = compatibleWith;
+    }
+
+    public Long getTelevisionId() {
+        return televisionId;
+    }
+
+    public void setTelevisionId(Long televisionId) {
+        this.televisionId = televisionId;
     }
 }

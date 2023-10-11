@@ -17,12 +17,13 @@ public class CiModule {
     @OneToMany (mappedBy = "ciModule")
     private List<Television> televisionsList;
 
-//    public CiModule(Long id, String name, String type, Double price) {
-//        this.id = id;
-//        this.name = name;
-//        this.type = type;
-//        this.price = price;
-//    }
+    public CiModule(Long id, String name, String type, Double price, List<Television> televisionsList) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.price = price;
+        this.televisionsList = televisionsList;
+    }
 
     public CiModule(){}
 

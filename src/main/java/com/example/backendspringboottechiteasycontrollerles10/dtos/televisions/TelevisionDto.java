@@ -30,9 +30,9 @@ public class TelevisionDto {
     public CiModuleDto ciModuleDto;
     public RemoteControlDto remoteControlDto;
 
-    private List<WallBracketDto> wallBracketDtos;
+    public List<WallBracketDto> wallBracketDtoList;
 
-    public TelevisionDto(Long id, String type, String brand, String name, Double price, Double availableSize, Double refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, Integer originalStock, Integer sold, CiModuleDto ciModuleDto, RemoteControlDto remoteControlDto, List<WallBracketDto> wallBracketDto) {
+    public TelevisionDto(Long id, String type, String brand, String name, Double price, Double availableSize, Double refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, Integer originalStock, Integer sold, CiModuleDto ciModuleDto, RemoteControlDto remoteControlDto, List<WallBracketDto> wallBracketDtoList) {
         this.id = id;
         this.type = type;
         this.brand = brand;
@@ -50,9 +50,9 @@ public class TelevisionDto {
         this.ambiLight = ambiLight;
         this.originalStock = originalStock;
         this.sold = sold;
-        this.remoteControlDto = remoteControlDto;
         this.ciModuleDto = ciModuleDto;
-        this.wallBracketDtos = wallBracketDto;
+        this.remoteControlDto = remoteControlDto;
+        this.wallBracketDtoList = wallBracketDtoList;
     }
 
     public TelevisionDto() {
@@ -210,11 +210,11 @@ public class TelevisionDto {
         this.remoteControlDto = remoteControlDto;
     }
 
-    public List<WallBracketDto> getWallBracketDtos() {
-        return wallBracketDtos;
+    public List<WallBracketDto> getWallBracketDtoList() {
+        return wallBracketDtoList;
     }
 
-    public void setWallBracketDtos(List<WallBracketDto> wallBracketDtos) {
-        this.wallBracketDtos = wallBracketDtos;
+    public void setWallBracketDtoList(List<WallBracketDto> wallBracketDtoList) {
+        this.wallBracketDtoList = wallBracketDtoList;
     }
 }
