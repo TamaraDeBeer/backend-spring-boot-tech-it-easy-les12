@@ -23,4 +23,6 @@ public class ExceptionController {
     public ResponseEntity<String> exception (TelevisionNameTooLongException exception) {
         return new ResponseEntity<>(exception.getMessage(),HttpStatus.BAD_REQUEST);
     }
+
+    /*TODO maak exceptionHandlers voor de 2 nieuwe exceptions*/
 }
