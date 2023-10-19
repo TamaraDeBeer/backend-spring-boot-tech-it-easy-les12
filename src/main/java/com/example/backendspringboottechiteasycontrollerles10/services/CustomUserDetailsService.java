@@ -1,15 +1,25 @@
 package com.example.backendspringboottechiteasycontrollerles10.services;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.stereotype.Service;
+import com.example.backendspringboottechiteasycontrollerles10.dtos.UserDto;
+import com.example.backendspringboottechiteasycontrollerles10.models.Authority;
+
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
-
-
-/*TODO annotatie*/
+@Service
 public class CustomUserDetailsService implements UserDetailsService {
 
-    /*TODO inject userservice */
+    private final UserService userService;
 
-
+    public CustomUserDetailsService(UserService userService) {
+        this.userService = userService;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) {

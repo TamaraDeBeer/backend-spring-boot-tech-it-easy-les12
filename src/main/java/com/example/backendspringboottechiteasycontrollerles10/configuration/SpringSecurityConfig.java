@@ -1,5 +1,7 @@
 package com.example.backendspringboottechiteasycontrollerles10.configuration;
 
+import com.example.backendspringboottechiteasycontrollerles10.filter.JwtRequestFilter;
+import com.example.backendspringboottechiteasycontrollerles10.services.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -20,6 +22,14 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SpringSecurityConfig {
 
     /*TODO inject customUserDetailService en jwtRequestFilter*/
+
+    public final CustomUserDetailsService customUserDetailsService;
+    public final JwtRequestFilter jwtRequestFilter;
+
+    public SpringSecurityConfig(CustomUserDetailsService customUserDetailsService, JwtRequestFilter jwtRequestFilter) {
+        this.customUserDetailsService = customUserDetailsService;
+        this.jwtRequestFilter = jwtRequestFilter;
+    }
 
 
     // PasswordEncoderBean. Deze kun je overal in je applicatie injecteren waar nodig.

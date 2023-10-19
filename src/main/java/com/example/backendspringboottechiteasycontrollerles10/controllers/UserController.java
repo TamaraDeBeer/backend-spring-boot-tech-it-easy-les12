@@ -1,7 +1,8 @@
 package com.example.backendspringboottechiteasycontrollerles10.controllers;
 
 import com.example.backendspringboottechiteasycontrollerles10.dtos.UserDto;
-import com.example.backendspringboottechiteasycontrollerles10.models.*;
+import com.example.backendspringboottechiteasycontrollerles10.exceptions.BadRequestException;
+import com.example.backendspringboottechiteasycontrollerles10.services.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -14,8 +15,11 @@ import java.util.Map;
 @RestController
 @RequestMapping(value = "/users")
 public class UserController {
+    private final UserService userService;
 
-    /*TODO inject userService*/
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping(value = "")
     public ResponseEntity<List<UserDto>> getUsers() {

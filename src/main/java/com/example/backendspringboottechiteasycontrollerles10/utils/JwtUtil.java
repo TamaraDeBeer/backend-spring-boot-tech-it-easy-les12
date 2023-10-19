@@ -1,11 +1,16 @@
 package com.example.backendspringboottechiteasycontrollerles10.utils;
 
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Service;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.security.Key;
+import java.security.Signature;
+import java.util.function.Function;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -53,7 +58,7 @@ public class JwtUtil {
                 .setClaims(claims)
                 .setSubject(subject)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24)) //TODO: de JWT vervalt nu na 24 uur. Zorg dat de JWT 10 dagen geldig is.
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 10)) // 10 dagen
                 .signWith(getSigningKey() ,SignatureAlgorithm.HS256)
                 .compact();
     }

@@ -1,7 +1,16 @@
 package com.example.backendspringboottechiteasycontrollerles10.controllers;
 
+import com.example.backendspringboottechiteasycontrollerles10.payload.AuthenticationRequest;
+import com.example.backendspringboottechiteasycontrollerles10.payload.AuthenticationResponse;
+import com.example.backendspringboottechiteasycontrollerles10.utils.JwtUtil;
+import com.example.backendspringboottechiteasycontrollerles10.services.CustomUserDetailsService;
+
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -9,8 +18,15 @@ import java.security.Principal;
 @CrossOrigin
 @RestController
 public class AuthenticationController {
+    private final AuthenticationManager authenticationManager;
+    private final CustomUserDetailsService userDetailsService;
+    private final JwtUtil jwtUtil;
 
-    /*TODO inject authentionManager, userDetailService en jwtUtil*/
+    public AuthenticationController(AuthenticationManager authenticationManager, CustomUserDetailsService userDetailsService, JwtUtil jwtUtil) {
+        this.authenticationManager = authenticationManager;
+        this.userDetailsService = userDetailsService;
+        this.jwtUtil = jwtUtil;
+    }
 
     /*
          Deze methode geeft de principal (basis user gegevens) terug van de ingelogde gebruiker
