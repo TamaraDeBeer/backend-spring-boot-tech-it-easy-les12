@@ -51,3 +51,11 @@ VALUES (5000, 8000), (5000, 8002), (5000, 8003), (5000, 8004), (5000, 8005),
        (5003, 8000), (5003, 8001), (5003, 8002), (5003, 8003), (5003, 8005),
        (5004, 8000), (5004, 8001), (5004, 8002), (5004, 8003), (5004, 8004), (5004, 8005),
        (5005, 8000), (5005, 8001), (5005, 8002), (5005, 8003), (5005, 8004), (5005, 8005);
+
+INSERT INTO authorities (username, authority)
+    VALUES ('Knabbel', 'ROLE_USER'),
+           ('Babbel', 'ROLE_ADMIN');
+
+INSERT INTO users (username, password, enabled)
+    VALUES ('Knabbel', '$2a$1', true),
+           ('Babbel', '$2a$1', true);
