@@ -18,9 +18,6 @@ import java.io.IOException;
 
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
-
-    /*TODO inject customUserDetailService en jwtUtil*/
-
     private final CustomUserDetailsService customUserDetailsService;
     private final JwtUtil jwtUtil;
 

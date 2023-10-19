@@ -35,9 +35,9 @@ public class UserService {
     public UserDto getUser(String username) {
         UserDto dto = new UserDto();
         Optional<User> user = userRepository.findById(username);
-        if (user.isPresent()){
+        if (user.isPresent()) {
             dto = fromUser(user.get());
-        }else {
+        } else {
             throw new UsernameNotFoundException(username);
         }
         return dto;
@@ -88,7 +88,7 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public static UserDto fromUser(User user){
+    public static UserDto fromUser(User user) {
 
         var dto = new UserDto();
 

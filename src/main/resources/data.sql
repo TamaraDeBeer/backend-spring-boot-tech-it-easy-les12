@@ -56,6 +56,6 @@ INSERT INTO authorities (username, authority)
     VALUES ('Knabbel', 'ROLE_USER'),
            ('Babbel', 'ROLE_ADMIN');
 
-INSERT INTO users (username, password, enabled)
-    VALUES ('Knabbel', '$2a$1', true),
-           ('Babbel', '$2a$1', true);
+INSERT INTO users (username, password, email, enabled)
+    VALUES ('Knabbel', '$2a$1', 'knabbel@test.nl', true),
+           ('Babbel', '$2a$1', 'babbel@test.nl', true);

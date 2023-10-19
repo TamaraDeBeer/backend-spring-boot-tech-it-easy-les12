@@ -30,15 +30,11 @@ public class SpringSecurityConfig {
         this.jwtRequestFilter = jwtRequestFilter;
     }
 
-    // PasswordEncoderBean. Deze kun je overal in je applicatie injecteren waar nodig.
-    // Je kunt dit ook in een aparte configuratie klasse zetten.
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-
-    // Authenticatie met customUserDetailsService en passwordEncoder
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http, PasswordEncoder passwordEncoder) throws Exception {
         var auth = new DaoAuthenticationProvider();
@@ -47,33 +43,31 @@ public class SpringSecurityConfig {
         return new ProviderManager(auth);
     }
 
-    // Authorizatie met jwt
     @Bean
-    protected SecurityFilterChain filter (HttpSecurity http) throws Exception {
+    protected SecurityFilterChain filter(HttpSecurity http) throws Exception {
 
-        //JWT token authentication
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(auth ->
-                                auth
-                                        .requestMatchers(HttpMethod.POST, "/users").hasRole("ADMIN")
-                                        .requestMatchers(HttpMethod.GET,"/users").hasRole("ADMIN")
-                                        .requestMatchers(HttpMethod.POST,"/users/**").hasRole("ADMIN")
-                                        .requestMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN")
-                                        .requestMatchers(HttpMethod.POST, "/cimodules").hasRole("ADMIN")
-                                        .requestMatchers(HttpMethod.DELETE, "/cimodules/**").hasRole("ADMIN")
-                                        .requestMatchers(HttpMethod.POST, "/remotecontrollers").hasRole("ADMIN")
-                                        .requestMatchers(HttpMethod.DELETE, "/remotecontrollers/**").hasRole("ADMIN")
-                                        .requestMatchers(HttpMethod.POST, "/televisions").hasRole("ADMIN")
-                                        .requestMatchers(HttpMethod.DELETE, "/televisions/**").hasRole("ADMIN")
-                                        .requestMatchers(HttpMethod.POST, "/wallbrackets").hasRole("ADMIN")
-                                        .requestMatchers(HttpMethod.DELETE, "/wallbrackets/**").hasRole("ADMIN")
-                                        .requestMatchers("/cimodules", "/remotecontrollers", "/televisions", "/wallbrackets").hasAnyRole("ADMIN", "USER")
-                                        .requestMatchers("/authenticated").authenticated()
-                                        .requestMatchers("/authenticate").permitAll()
-                                        .anyRequest().denyAll()
+                        auth
+                                .requestMatchers(HttpMethod.POST, "/users").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/users").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.POST, "/users/**").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.POST, "/cimodules").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.DELETE, "/cimodules/**").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.POST, "/remotecontrollers").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.DELETE, "/remotecontrollers/**").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.POST, "/televisions").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.DELETE, "/televisions/**").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.POST, "/wallbrackets").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.DELETE, "/wallbrackets/**").hasRole("ADMIN")
+                                .requestMatchers("/cimodules", "/remotecontrollers", "/televisions", "/wallbrackets").hasAnyRole("ADMIN", "USER")
+                                .requestMatchers("/authenticated").authenticated()
+                                .requestMatchers("/authenticate").permitAll()
+                                .anyRequest().denyAll()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

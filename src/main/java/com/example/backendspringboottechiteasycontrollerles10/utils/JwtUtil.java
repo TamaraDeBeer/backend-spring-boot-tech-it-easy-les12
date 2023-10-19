@@ -19,7 +19,6 @@ import java.util.Map;
 @Service
 public class JwtUtil {
 
-    // De secret key moet minimaal 256 bits lang zijn, of grofweg 45 characters
     private final static String SECRET_KEY = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
     private Key getSigningKey() {
@@ -59,7 +58,7 @@ public class JwtUtil {
                 .setSubject(subject)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 10)) // 10 dagen
-                .signWith(getSigningKey() ,SignatureAlgorithm.HS256)
+                .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
 
