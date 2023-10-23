@@ -15,7 +15,6 @@
     <description>backend-spring-boot-tech-it-easy-controller-les10</description>
     <properties>
         <java.version>21</java.version>
-<!--        Kan versie 21 niet gebruiken    -->
     </properties>
 
     <dependencies>
